@@ -11,12 +11,25 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const events_controller_1 = require("./events.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const event_entity_1 = require("./event.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [typeorm_1.TypeOrmModule.forRoot({
+                type: 'mysql',
+                host: '127.0.0.1',
+                port: 3306,
+                username: 'root',
+                password: 'example',
+                database: 'nest-events',
+                entities: [event_entity_1.Event],
+                synchronize: true
+            }),
+            typeorm_1.TypeOrmModule.forFeature([event_entity_1.Event])
+        ],
         controllers: [app_controller_1.AppController, events_controller_1.EventsController],
         providers: [app_service_1.AppService],
     })
