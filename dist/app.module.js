@@ -10,9 +10,9 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const events_controller_1 = require("./events.controller");
 const typeorm_1 = require("@nestjs/typeorm");
-const event_entity_1 = require("./event.entity");
+const event_entity_1 = require("./events/event.entity");
+const events_module_1 = require("./events/events.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,9 +28,9 @@ exports.AppModule = AppModule = __decorate([
                 entities: [event_entity_1.Event],
                 synchronize: true
             }),
-            typeorm_1.TypeOrmModule.forFeature([event_entity_1.Event])
+            events_module_1.EventsModule
         ],
-        controllers: [app_controller_1.AppController, events_controller_1.EventsController],
+        controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
 ], AppModule);
