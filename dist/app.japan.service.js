@@ -12,20 +12,21 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppService = void 0;
+exports.AppJapanService = void 0;
 const common_1 = require("@nestjs/common");
-let AppService = class AppService {
-    constructor(name) {
+let AppJapanService = class AppJapanService {
+    constructor(name, message) {
         this.name = name;
+        this.message = message;
     }
     getHello() {
-        return `Hello World! from ${this.name}`;
+        return `こんにちは世界! from ${this.name}, ${this.message}`;
     }
 };
-exports.AppService = AppService;
-exports.AppService = AppService = __decorate([
-    (0, common_1.Injectable)(),
+exports.AppJapanService = AppJapanService;
+exports.AppJapanService = AppJapanService = __decorate([
     __param(0, (0, common_1.Inject)("APP_NAME")),
-    __metadata("design:paramtypes", [String])
-], AppService);
-//# sourceMappingURL=app.service.js.map
+    __param(1, (0, common_1.Inject)('MESSAGE')),
+    __metadata("design:paramtypes", [String, String])
+], AppJapanService);
+//# sourceMappingURL=app.japan.service.js.map
